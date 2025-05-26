@@ -16,13 +16,13 @@ export const Hero = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 
-  [`${Heading}`]: {
+  [`> ${Heading}`]: {
     '@media(max-width: 600px)': {
       fontSize: '$6xl',
     },
   },
 
-  [`${Text}`]: {
+  [`> ${Text}`]: {
     marginTop: '$2',
     color: '$gray200',
   },
