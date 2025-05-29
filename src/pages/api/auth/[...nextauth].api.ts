@@ -34,7 +34,12 @@ export function buildNextAuthOptions(
     ],
 
     callbacks: {
-      async signIn({ account }) {
+      async signIn({ account, profile }) {
+        if (account?.provider === 'google' && profile?.sub) {
+          account.providerAccountId = profile?.sub
+          console.log('Account:', account)
+          console.log('Profile:', profile)
+        }
         if (
           !account?.scope?.includes('https://www.googleapis.com/auth/calendar')
         ) {
@@ -42,6 +47,13 @@ export function buildNextAuthOptions(
         }
 
         return true
+      },
+      async session({ session, user }) {
+        if (session?.user) {
+          session.user.id = user.id
+        }
+
+        return session
       },
     },
   }

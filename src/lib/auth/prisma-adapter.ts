@@ -134,7 +134,7 @@ export function PrismaAdapter(
           user_id: account.userId,
           type: account.type,
           provider: account.provider,
-          provider_account_id: account.provider_account_id as string,
+          provider_account_id: account.providerAccountId,
           refresh_token: account.refresh_token,
           access_token: account.access_token,
           expires_at: account.expires_at,
