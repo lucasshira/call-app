@@ -45,7 +45,7 @@ export default function ConnectCalendar() {
               size="sm"
               onClick={handleConnectCalendar}
             >
-              {}
+              Conectar
               <ArrowRight size={16} />
             </Button>
           )}
