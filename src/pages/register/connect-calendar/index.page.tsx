@@ -58,7 +58,10 @@ export default function ConnectCalendar() {
           </AuthError>
         )}
 
-        <Button disabled={!isSignedIn}>
+        <Button
+          disabled={!isSignedIn}
+          onClick={router.push('/register/time-intervals')}
+        >
           Próximo passo
           <ArrowRight size={16} />
         </Button>
