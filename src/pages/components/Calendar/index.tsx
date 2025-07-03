@@ -27,7 +27,7 @@ interface CalendarProps {
 }
 
 export default function Calendar({
-  selectedDate,
+  // selectedDate,
   onDateSelected,
 }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(() => {
@@ -57,7 +57,7 @@ export default function Calendar({
       return currentDate.set('date', i + 1)
     })
 
-    const firstWeekDay = currentDate.get('day')
+    const firstWeekDay = (currentDate.get('day') + 6) % 7
 
     const previousMonthFillArray = Array.from({ length: firstWeekDay })
       .map((_, i) => {
