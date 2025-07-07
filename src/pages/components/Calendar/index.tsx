@@ -26,6 +26,7 @@ type CalendarWeeks = CalendarWeek[]
 
 interface BlockedDates {
   blockedWeekDays: number[]
+  blockedDates: { date: number }[]
 }
 
 interface CalendarProps {
@@ -66,7 +67,7 @@ export default function Calendar({
       const response = await api.get(`/users/${username}/blocked-dates`, {
         params: {
           year: currentDate.get('year'),
-          month: currentDate.get('month'),
+          month: currentDate.format('MM'),
         },
       })
 
@@ -112,7 +113,10 @@ export default function Calendar({
           date,
           disabled:
             date.endOf('day').isBefore(new Date()) ||
-            !!blockedDates?.blockedWeekDays.includes(date.get('day')),
+            !!blockedDates?.blockedWeekDays.includes(date.get('day')) ||
+            !!blockedDates?.blockedDates.some(
+              (blocked) => blocked.date === date.get('date'),
+            ),
         }
       }),
       ...nextMonthFillArray.map((date) => {
