@@ -17,8 +17,9 @@ export function buildNextAuthOptions(
           params: {
             scope:
               'openid email profile https://www.googleapis.com/auth/calendar',
-            access_type: 'offline',
             prompt: 'consent',
+            access_type: 'offline',
+            response_type: 'code',
           },
         },
         profile: (profile: GoogleProfile) => {

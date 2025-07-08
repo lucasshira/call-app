@@ -76,12 +76,12 @@ export default function TimeIntervals() {
     defaultValues: {
       intervals: [
         // week days
-        { weekDay: 0, enabled: true, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 0, enabled: false, startTime: '08:00', endTime: '18:00' },
         { weekDay: 1, enabled: true, startTime: '08:00', endTime: '18:00' },
         { weekDay: 2, enabled: true, startTime: '08:00', endTime: '18:00' },
         { weekDay: 3, enabled: true, startTime: '08:00', endTime: '18:00' },
         { weekDay: 4, enabled: true, startTime: '08:00', endTime: '18:00' },
-        { weekDay: 5, enabled: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 5, enabled: true, startTime: '08:00', endTime: '18:00' },
         { weekDay: 6, enabled: false, startTime: '08:00', endTime: '18:00' },
       ],
     },
@@ -91,6 +91,8 @@ export default function TimeIntervals() {
     control,
     name: 'intervals',
   })
+
+  console.log(fields)
 
   const weekDays = getWeekDays()
   const intervals = watch('intervals')
@@ -102,6 +104,8 @@ export default function TimeIntervals() {
     await api.post('/users/time-intervals', {
       intervals,
     })
+
+    console.log(data)
 
     await router.push('/register/update-profile')
   }

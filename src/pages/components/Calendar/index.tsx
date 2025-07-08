@@ -34,10 +34,7 @@ interface CalendarProps {
   onDateSelected?: (date: Date) => void
 }
 
-export default function Calendar({
-  // selectedDate,
-  onDateSelected,
-}: CalendarProps) {
+export default function Calendar({ onDateSelected }: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(() => {
     return dayjs().set('date', 1)
   })
@@ -83,7 +80,7 @@ export default function Calendar({
       return currentDate.set('date', i + 1)
     })
 
-    const firstWeekDay = (currentDate.get('day') + 6) % 7
+    const firstWeekDay = currentDate.day()
 
     const previousMonthFillArray = Array.from({ length: firstWeekDay })
       .map((_, i) => {
@@ -96,7 +93,7 @@ export default function Calendar({
       currentDate.daysInMonth(),
     )
 
-    const lastWeekDay = lastDayInCurrentMonth.get('day')
+    const lastWeekDay = lastDayInCurrentMonth.day()
 
     const nextMonthFillArray = Array.from({
       length: 7 - (lastWeekDay + 1),
@@ -113,7 +110,7 @@ export default function Calendar({
           date,
           disabled:
             date.endOf('day').isBefore(new Date()) ||
-            !!blockedDates?.blockedWeekDays.includes(date.get('day')) ||
+            !!blockedDates?.blockedWeekDays.includes(date.day()) ||
             !!blockedDates?.blockedDates.some(
               (blocked) => blocked.date === date.get('date'),
             ),
