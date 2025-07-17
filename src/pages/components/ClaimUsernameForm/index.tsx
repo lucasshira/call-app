@@ -37,6 +37,8 @@ export function ClaimUsernameForm() {
     await router.push(`/register?username=${username}`)
   }
 
+  const { ref, ...registerProps } = register('username')
+
   return (
     <>
       <Form as="form" onSubmit={handleSubmit(handleClaimUsername)}>
@@ -47,6 +49,8 @@ export function ClaimUsernameForm() {
           prefix="ignite.com/"
           placeholder="your-username"
           {...register('username')}
+          ref={ref}
+          {...registerProps}
         />
         <Button size="sm" type="submit" disabled={isSubmitting}>
           Reservar
