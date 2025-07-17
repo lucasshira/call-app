@@ -147,12 +147,14 @@ export default function TimeIntervals() {
                     <IntervalInputs>
                       <TextInput
                         size="sm"
+                        id="starttime"
                         type="time"
                         step={60}
                         {...register(`intervals.${i}.startTime`)}
                         disabled={intervals[i].enabled === false}
                       />
                       <TextInput
+                        id="endtime"
                         size="sm"
                         type="time"
                         step={60}
