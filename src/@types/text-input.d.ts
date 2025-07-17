@@ -1,16 +1,12 @@
-// types/text-input.d.ts
-import 'react'
+import { ComponentProps } from 'react'
 
 declare module '@ignite-ui/react' {
-  import * as React from 'react'
-
-  export interface TextInputProps
-    extends React.InputHTMLAttributes<HTMLInputElement> {
+  export interface TextInputProps extends ComponentProps<'input'> {
+    size?: 'sm' | 'md' | 'lg'
     prefix?: string
-    size?: 'sm' | 'md'
+    placeholder?: string
+    id?: string
+    name?: string
+    type?: string
   }
-
-  export const TextInput: React.ForwardRefExoticComponent<
-    TextInputProps & React.RefAttributes<HTMLInputElement>
-  >
 }

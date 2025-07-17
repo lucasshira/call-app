@@ -7,19 +7,6 @@ import { ArrowRight } from 'phosphor-react'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/router'
-import { ComponentProps } from 'react'
-
-interface CustomTextInputProps extends ComponentProps<'input'> {
-  type?: string
-  id?: string
-  prefix?: string
-  placeholder?: string
-  size?: number
-  name?: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
-  ref?: (instance: HTMLInputElement | null) => void
-}
 
 const claimUsernameFormSchema = z.object({
   username: z
@@ -59,7 +46,7 @@ export function ClaimUsernameForm() {
           size="sm"
           prefix="ignite.com/"
           placeholder="your-username"
-          {...(register('username') as CustomTextInputProps)}
+          {...register('username')}
         />
         <Button size="sm" type="submit" disabled={isSubmitting}>
           Reservar
