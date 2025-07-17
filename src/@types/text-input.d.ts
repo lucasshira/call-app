@@ -1,12 +1,21 @@
-import { ComponentProps } from 'react'
+import { ForwardRefExoticComponent, RefAttributes } from 'react'
 
 declare module '@ignite-ui/react' {
-  export interface TextInputProps extends ComponentProps<'input'> {
-    size?: 'sm' | 'md' | 'lg'
+  interface TextInputCustomProps {
+    type?: string
+    id?: string
+    size?: 'sm' | 'md'
     prefix?: string
     placeholder?: string
-    id?: string
+    error?: string
+    disabled?: boolean
     name?: string
-    type?: string
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void
+    ref?: React.Ref<HTMLInputElement>
   }
+
+  export const TextInput: ForwardRefExoticComponent<
+    TextInputCustomProps & RefAttributes<HTMLInputElement>
+  >
 }
