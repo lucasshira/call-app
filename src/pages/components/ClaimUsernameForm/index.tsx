@@ -46,7 +46,8 @@ export function ClaimUsernameForm() {
           size="sm"
           prefix="ignite.com/"
           placeholder="your-username"
-          {...register('username')}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          {...(register('username') as any)}
         />
         <Button size="sm" type="submit" disabled={isSubmitting}>
           Reservar
